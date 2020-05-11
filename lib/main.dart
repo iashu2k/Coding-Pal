@@ -41,15 +41,12 @@ class CodingPal extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                                      child: LogoCards(
+                    child: LogoCards(
                       logoname: 'codechef.jpg',
                     ),
                   ),
-                  SizedBox(
-                    width: 20.0,
-                  ),
                   Expanded(
-                                      child: LogoCards(
+                    child: LogoCards(
                       logoname: 'codeforces.png',
                     ),
                   )
@@ -62,9 +59,6 @@ class CodingPal extends StatelessWidget {
                   LogoCards(
                     logoname: 'hackerearth.png',
                   ),
-                  SizedBox(
-                    width: 20.0,
-                  ),
                   LogoCards(
                     logoname: 'hackerrank.png',
                   )
@@ -76,9 +70,6 @@ class CodingPal extends StatelessWidget {
                 children: <Widget>[
                   LogoCards(
                     logoname: 'leetcode.jpg',
-                  ),
-                  SizedBox(
-                    width: 20.0,
                   ),
                   LogoCards(
                     logoname: 'topcoder.jpg',
@@ -99,8 +90,12 @@ class LogoCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Image.asset('images/$logoname'),
-      //margin: EdgeInsets.all(15.0),
+      child: Image.asset(
+        'images/$logoname',
+        width: 120.0,
+        height: 120.0,
+      ),
+      margin: EdgeInsets.all(15.0),
       padding: EdgeInsets.all(15.0),
       decoration: BoxDecoration(
         color: kcardColor,
