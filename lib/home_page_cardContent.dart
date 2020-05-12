@@ -10,14 +10,8 @@ class Cardcontent extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        CircleAvatar(
-          radius: 60.0,
-          backgroundColor: kcardColor,
-          child: ClipOval(
-            child: Image.asset(
-              'images/$logoname',
-            ),
-          ),
+        Image.asset(
+            'images/$logoname', height: 100.0, width: 100.0,
         ),
         SizedBox(
           height: 10.0,
