@@ -12,7 +12,7 @@ class LogoCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>InfoPage(platform: platform),));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>InfoPage(platform: platform, logoname: logoname,),));
         
       },
       child: Container(
