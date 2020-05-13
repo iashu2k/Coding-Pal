@@ -31,6 +31,7 @@ dependencies:
   http: ^0.12.1
   intl: ^0.16.1
   duration: ^2.0.11
+  auto_size_text: ^2.1.0
  
 
 dev_dependencies:
@@ -55,6 +56,9 @@ flutter:
     - family: Roboto
       fonts:
         - asset: fonts/Roboto-Black.ttf
+    - family: Raleway
+      fonts:
+        - asset: fonts/Raleway-SemiBold.ttf
 
   # To add assets to your application, add an assets section, like this:
   assets:

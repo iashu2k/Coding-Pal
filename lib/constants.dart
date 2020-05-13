@@ -20,13 +20,10 @@ const kplatname = TextStyle(
   letterSpacing: 1.0,
 );
 
-const kcontestname = TextStyle(
-  fontFamily: 'Roboto',
-  fontSize: 18.0,
-  letterSpacing: 1.0,
-);
+
 
 const kdates = TextStyle(
-  fontSize: 18.0,
-  fontWeight: FontWeight.w200,
+  fontSize: 24.0,
+  fontFamily: 'Raleway',
+  fontWeight: FontWeight.w900,
 );

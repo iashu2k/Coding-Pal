@@ -10,8 +10,11 @@ class Cardcontent extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Image.asset(
-            'images/$logoname', height: 100.0, width: 100.0,
+        ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
+                  child: Image.asset(
+              'images/$logoname', height: 100.0, width: 100.0,
+          ),
         ),
         SizedBox(
           height: 10.0,
