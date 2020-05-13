@@ -1,31 +1,57 @@
-import 'package:CodingPal/constants.dart';
 import 'package:flutter/material.dart';
-import 'services/contests.dart';
-import 'contest_header.dart';
 import 'contest_display.dart';
+import 'constants.dart';
 
 class InfoPage extends StatelessWidget {
-  InfoPage({this.platform, this.logoname});
+  InfoPage({this.platform, this.logoname, this.competitions});
   final String platform;
   final String logoname;
+  final competitions;
 
   @override
   Widget build(BuildContext context) {
-    //Contests contests = Contests(platform: platform);
-    //contests.allcontests();
-
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 5.0),
-            child: ContestDisplay(logoname: logoname, platform: platform),
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            floating: true,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              centerTitle: true,
+              title: Text(
+                platform,
+                style: kinfoheading,
+              ),
+              background: Row(
+                children: <Widget>[
+                  Spacer(),
+                  CircleAvatar(
+                    radius: 68.0,
+                    child: ClipOval(
+                      child: Image.asset(
+                        'images/$logoname',
+                      ),
+                    ),
+                  ),
+                  Spacer(),
+                ],
+              ),
+            ),
+            expandedHeight: 200,
           ),
-          ContestDisplayCard(),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => ContestDisplayCard(
+                name: competitions[index]['event'],
+                start: competitions[index]['start'],
+                end: competitions[index]['end'],
+                duration: competitions[index]['duration'],
+              ),
+              childCount: competitions.length,
+            ),
+          ),
         ],
       ),
-      appBar: AppBar(),
     );
   }
 }
-

@@ -1,13 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:CodingPal/constants.dart';
+import 'package:intl/intl.dart';
+import 'package:duration/duration.dart';
 
 class ContestDisplayCard extends StatelessWidget {
-  const ContestDisplayCard({
-    Key key,
-  }) : super(key: key);
+  ContestDisplayCard({this.name, this.start, this.end, this.duration});
+  final String name;
+  final String start;
+  final String end;
+  final int duration;
+
+  String compDate(String compD) {
+    return DateFormat.MMMMd().format(DateTime.parse(compD));
+  }
+
+  String compTime(String compT) {
+    return DateFormat.jm().format(DateTime.parse(compT));
+  }
 
   @override
   Widget build(BuildContext context) {
+    var str = compDate(start);
+    var en = compDate(end);
+    var strtime = compTime(start);
+    var entime = compTime(end);
+    var dur = Duration(seconds: duration);
+    DateTime compStart = DateTime.parse(start);
+    DateTime now = DateTime.now();
+    int status = now.compareTo(compStart);
+    String compStaus = (status >= 0)
+        ? 'LIVE'
+        : printDuration(
+            now.difference(compStart),
+            abbreviated: true,
+          );
+
     return Container(
       margin: EdgeInsets.all(20.0),
       padding: EdgeInsets.all(20.0),
@@ -18,15 +45,15 @@ class ContestDisplayCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            'LIVE',
+            compStaus,
             textAlign: TextAlign.right,
             style: TextStyle(
               color: Colors.green,
-              fontSize: 10.0,
+              fontSize: 12.0,
             ),
           ),
           Text(
-            'MAY LONG CHALLENGE',
+            name,
             style: kcontestname,
             textAlign: TextAlign.center,
           ),
@@ -37,15 +64,15 @@ class ContestDisplayCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                'May 2',
+                str,
                 style: kdates,
               ),
               Text(
-                '10 Days',
+                printDuration(dur, abbreviated: true),
                 style: kdates,
               ),
               Text(
-                'May 12',
+                en,
                 style: kdates,
               ),
             ],
@@ -57,7 +84,7 @@ class ContestDisplayCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                '15:00 hrs',
+                strtime,
                 style: kdates,
               ),
               CircleAvatar(
@@ -65,12 +92,11 @@ class ContestDisplayCard extends StatelessWidget {
                 backgroundColor: kscaffoldcolor,
                 child: Icon(
                   Icons.calendar_today,
-                  semanticLabel: 'Add to Calender',
                   color: Colors.pink,
                 ),
               ),
               Text(
-                '15:00 hrs',
+                entime,
                 style: kdates,
               ),
             ],

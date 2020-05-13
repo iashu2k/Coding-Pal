@@ -16,7 +16,7 @@ class ContestInfo {
   Future contestslist() async {
     String reqplatform = platcode[platform];
     String url = '''
-https://clist.by/api/v1/json/contest/?username=$userid&api_key=$apiKey&resource__id=$reqplatform&end__gt=$currenttime&end__lt=$nextmonth&order_by=end''';
+https://clist.by/api/v1/json/contest/?username=$userid&api_key=$apiKey&resource__id=$reqplatform&end__gt=$currenttime&end__lt=$nextmonth&order_by=start''';
     http.Response response = await http.get(url);
     if (response.statusCode == 200) {
       String data = response.body;
