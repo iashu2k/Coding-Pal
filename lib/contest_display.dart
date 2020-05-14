@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:duration/duration.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
+
 class ContestDisplayCard extends StatelessWidget {
   ContestDisplayCard({this.name, this.start, this.end, this.duration});
   final String name;
@@ -11,8 +12,12 @@ class ContestDisplayCard extends StatelessWidget {
   final String end;
   final int duration;
 
+  String compMonth(String compD) {
+    return DateFormat.MMMM().format(DateTime.parse(compD));
+  }
+
   String compDate(String compD) {
-    return DateFormat.MMMMd().format(DateTime.parse(compD));
+    return DateFormat.d().format(DateTime.parse(compD));
   }
 
   String compTime(String compT) {
@@ -25,25 +30,47 @@ class ContestDisplayCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var str = compDate(start);
-    var en = compDate(end);
+    var str = compMonth(start);
+    var en = compMonth(end);
+    var strdate = compDate(start);
+    var endate = compDate(end);
     var strtime = compTime(start);
     var entime = compTime(end);
     var strDay = compDay(start);
     var enDay = compDay(end);
-    var dur = Duration(seconds: duration);
+    String dur = printDuration(Duration(seconds: duration), abbreviated: true);
+    
     DateTime compStart = DateTime.parse(start);
     DateTime now = DateTime.now();
     int status = now.compareTo(compStart);
-    String compStaus = (status >= 0)
-        ? 'LIVE'
-        : printDuration(
-            now.difference(compStart),
-            abbreviated: true,
-          );
+    Widget compStaus = (status >= 0)
+        ? Text(
+            'LIVE',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              color: Colors.lightGreenAccent,
+              fontSize: 12.0,
+            ),
+          )
+        : Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            
+            CircleAvatar(
+              radius: 20.0,
+              backgroundColor: kscaffoldcolor,
+                          child: Icon(
+                          Icons.event,
+                          color: Colors.pink,
+                          size: 20.0,
+                          
+                        ),
+            ),
+          ],
+        );
 
-    var colour = (compStaus == 'LIVE') ? Colors.greenAccent : Colors.blue.shade200;
-    IconData reminder = (compStaus == 'LIVE') ? Icons.open_in_new : Icons.calendar_today;
+    
+    
 
     return Container(
       margin: EdgeInsets.all(10.0),
@@ -54,23 +81,9 @@ class ContestDisplayCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
-            compStaus,
-            textAlign: TextAlign.right,
-            style: TextStyle(
-              color: colour,
-              fontSize: 12.0,
-            ),
-          ),
-          SizedBox(
-            height: 5.0,
-          ),
-          // Text(
-          //   name,
-          //   style: kcontestname,
-          //   textAlign: TextAlign.center,
-
-          // ),
+          
+          compStaus,
+                    
           AutoSizeText(
             name,
             textAlign: TextAlign.center,
@@ -90,7 +103,7 @@ class ContestDisplayCard extends StatelessWidget {
                     strDay.substring(0, 3).toUpperCase(),
                   ),
                   Text(
-                    str,
+                    str.substring(0,3)+' '+strdate,
                     style: kdates,
                   ),
                   Text(
@@ -98,21 +111,15 @@ class ContestDisplayCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Column(
-                children: <Widget>[
-                  Text(
-                    printDuration(dur, abbreviated: true),
-                  ),
-                  SizedBox(height: 10,),
-                  CircleAvatar(
-                    radius: 20.0,
-                    backgroundColor: kscaffoldcolor,
-                    child: Icon(
-                      reminder,
-                      color: Colors.pink,
-                    ),
-                  ),
-                ],
+              Container(
+                padding: EdgeInsets.all(5.0),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blueAccent),
+                  
+                ),
+                child: Text(
+                  dur,
+                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -121,7 +128,7 @@ class ContestDisplayCard extends StatelessWidget {
                     enDay.substring(0, 3).toUpperCase(),
                   ),
                   Text(
-                    en,
+                    en.substring(0,3)+' '+endate,
                     style: kdates,
                   ),
                   Text(
