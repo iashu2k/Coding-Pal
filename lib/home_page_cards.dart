@@ -1,31 +1,26 @@
-import 'package:CodingPal/info_page.dart';
 import 'package:flutter/material.dart';
 import 'package:CodingPal/home_page_cardContent.dart';
 import 'constants.dart';
-import 'services/contests.dart';
+import 'info_page.dart';
 
 class LogoCards extends StatelessWidget {
-  LogoCards({this.logoname, this.platform});
+  LogoCards({this.logoname, this.platform, this.contests});
   final String logoname;
   final String platform;
+  final contests;
   @override
   Widget build(BuildContext context) {
-    void handleList() async {
-      var competitions = await Contests(platform: platform).allcontests();
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => InfoPage(
-              platform: platform,
-              logoname: logoname,
-              competitions: competitions,
-            ),
-          ));
-    }
-
     return GestureDetector(
       onTap: () {
-        handleList();
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => InfoPage(
+                platform: platform,
+                logoname: logoname,
+                competitions: contests,
+              ),
+            ));
       },
       child: Container(
         child: Cardcontent(

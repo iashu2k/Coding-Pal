@@ -4,15 +4,14 @@ import 'contestsinfo.dart';
 
 class Contests {
 
-  Contests({this.platform});
-  String platform;
+  
   
   
 
   Future allcontests() async{
-    ContestInfo contest = ContestInfo(platform: platform);
+    ContestInfo contest = ContestInfo();
     var contestData = await contest.contestslist();
-    return contestData['objects'];
+    return contestData['objects'] as List;
     
 
   }

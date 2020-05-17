@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'homepage.dart';
+// import 'homepage.dart';
+import 'loadingpage.dart';
 
 void main() {
   runApp(CodingPal());
@@ -13,11 +14,12 @@ class CodingPal extends StatelessWidget {
         primaryColor: Color(0xFF0A0E21),
         scaffoldBackgroundColor: Color(0xFF0A0E21),
       ),
-      home: HomePage(),
-      routes: {
-        HomePage.id: (context)=>HomePage(),
+      home: LoadingPage(),
+      // routes: {
+      //   HomePage.id: (context)=>HomePage(),
+      //   LoadingPage.id:(context)=>LoadingPage(),
         
-      },
+      // },
     );
   }
 }

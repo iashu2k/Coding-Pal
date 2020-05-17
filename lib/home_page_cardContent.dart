@@ -1,4 +1,5 @@
 import 'package:CodingPal/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class Cardcontent extends StatelessWidget {
@@ -19,9 +20,11 @@ class Cardcontent extends StatelessWidget {
         SizedBox(
           height: 10.0,
         ),
-        Text(
+        AutoSizeText(
           platform,
           style: kplatname,
+          maxLines: 2,
+          textAlign: TextAlign.center,
         )
       ],
     );
