@@ -56,6 +56,7 @@ class PlatformList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      
       children: <Widget>[
         Expanded(
           child: LogoCards(

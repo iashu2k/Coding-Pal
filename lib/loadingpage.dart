@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'services/contests.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-
 class LoadingPage extends StatefulWidget {
   static const String id = 'loading_page';
 
@@ -12,32 +11,37 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
-  
-  
   @override
-  void initState() { 
+  void initState() {
     super.initState();
     getdata();
   }
 
-  void getdata() async{
+  void getdata() async {
     Contests contests = Contests();
-    var contents = await contests.allcontests();    
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return HomePage(
-        contests: contents,
-      );
-    }));
+    var contents = await contests.allcontests();
+
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => HomePage(
+                  contests: contents,
+                )));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SpinKitFadingFour(
-          color: Colors.white,
-          size: 60.0,
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        
+        children: <Widget>[
+          Image.asset('images/cp.png', height: 200, width: 200,),
+          SpinKitFadingFour(
+            color: Colors.white,
+            size: 25.0,
+          ),
+        ],
       ),
     );
   }
