@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:duration/duration.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'fancy_button.dart';
 
 class ContestDisplayCard extends StatelessWidget {
   ContestDisplayCard({this.name, this.start, this.end, this.duration, this.link});
@@ -65,30 +66,7 @@ class ContestDisplayCard extends StatelessWidget {
               fontSize: 12.0,
             ),
           )
-        : RawMaterialButton(
-            onPressed: () {},
-            fillColor: kscaffoldcolor,
-            splashColor: kcardColor,
-            shape: const StadiumBorder(),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Icon(
-                    Icons.event,
-                    color: Colors.pinkAccent,
-                  ),
-                  Text(
-                    ' Add to Calendar',
-                    style: TextStyle(
-                      fontSize: 10,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
+        : FancyButton(icon: Icons.event, label: ' Add to Calendar', onPressed: (){},);
 
     return Container(
       margin: EdgeInsets.all(10.0),
@@ -160,16 +138,12 @@ class ContestDisplayCard extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-          InkWell(
-            child: Text('Visit Page', style: TextStyle(color: Colors.orangeAccent, fontSize: 12),),
-            onTap: () => _launchURL(),
-            
-            
-            
-          ),
+          ),          
+          FancyButton(onPressed: () => _launchURL(), icon: Icons.open_in_new, label: ' Visit Page'),
         ],
       ),
     );
   }
 }
+
+
