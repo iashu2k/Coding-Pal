@@ -2,7 +2,7 @@ import 'package:CodingPal/homepage.dart';
 import 'package:flutter/material.dart';
 import 'services/contests.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'constants.dart';
+
 
 class LoadingPage extends StatefulWidget {
   static const String id = 'loading_page';
@@ -34,7 +34,7 @@ class _LoadingPageState extends State<LoadingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SpinKitFadingCircle(
+        child: SpinKitFadingFour(
           color: Colors.white,
           size: 60.0,
         ),
