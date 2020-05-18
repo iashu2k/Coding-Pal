@@ -12,13 +12,15 @@ class Cardcontent extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
-                  child: Hero(
-                    tag: platform,
-                                      child: Image.asset(
-              'images/$logoname', height: 100.0, width: 100.0,
+          borderRadius: BorderRadius.circular(24.0),
+          child: Hero(
+            tag: platform,
+            child: Image.asset(
+              'images/$logoname',
+              height: 100.0,
+              width: 100.0,
+            ),
           ),
-                  ),
         ),
         SizedBox(
           height: 10.0,
