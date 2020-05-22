@@ -5,56 +5,44 @@ import 'package:duration/duration.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'fancy_button.dart';
+import 'package:add_2_calendar/add_2_calendar.dart';
 
 class ContestDisplayCard extends StatelessWidget {
-  ContestDisplayCard({this.name, this.start, this.end, this.duration, this.link});
+  ContestDisplayCard(
+      {this.name, this.start, this.end, this.duration, this.link});
   final String name;
   final String start;
   final String end;
   final int duration;
   final String link;
 
-  String compMonth(String compD) {
-    return DateFormat.MMMM().format(DateTime.parse(compD));
-  }
-
-  String compDate(String compD) {
-    return DateFormat.d().format(DateTime.parse(compD));
-  }
-
-  String compTime(String compT) {
-    return DateFormat.jm().format(DateTime.parse(compT));
-  }
-
-  String compDay(String compDy) {
-    return DateFormat.EEEE().format(DateTime.parse(compDy));
-  }
-
   _launchURL() async {
-  String url = link;
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
+    String url = link;
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
-    var str = compMonth(start);
-    var en = compMonth(end);
-    var strdate = compDate(start);
-    var endate = compDate(end);
-    var strtime = compTime(start);
-    var entime = compTime(end);
-    var strDay = compDay(start);
-    var enDay = compDay(end);
+    DateTime compStart =
+        DateTime.parse(start).add(Duration(hours: 5, minutes: 30));
+    DateTime compEnd = DateTime.parse(end).add(Duration(hours: 5, minutes: 30));
+    var str = DateFormat.MMMM().format(compStart);
+    var en = DateFormat.MMMM().format(compEnd);
+    var strdate = DateFormat.d().format(compStart);
+    var endate = DateFormat.d().format(compEnd);
+    var strtime = DateFormat.jm().format(compStart);
+    var entime = DateFormat.jm().format(compEnd);
+    var strDay = DateFormat.EEEE().format(compStart);
+    var enDay = DateFormat.EEEE().format(compEnd);
     String dur = printDuration(
       Duration(seconds: duration),
       abbreviated: true,
     );
 
-    DateTime compStart = DateTime.parse(start);
     DateTime now = DateTime.now();
     int status = now.compareTo(compStart);
     Widget compStaus = (status >= 0)
@@ -66,7 +54,19 @@ class ContestDisplayCard extends StatelessWidget {
               fontSize: 12.0,
             ),
           )
-        : FancyButton(icon: Icons.event, label: ' Add to Calendar', onPressed: (){},);
+        : FancyButton(
+            icon: Icons.event,
+            label: ' Add to Calendar',
+            onPressed: () {
+              final Event event = Event(
+                  title: name,
+                  description: link,
+                  startDate: compStart,
+                  endDate: compEnd,
+                  timeZone: 'GMT+5:30');
+              Add2Calendar.addEvent2Cal(event);
+            },
+          );
 
     return Container(
       margin: EdgeInsets.all(10.0),
@@ -87,7 +87,6 @@ class ContestDisplayCard extends StatelessWidget {
             height: 5.0,
           ),
           compStaus,
-          
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -138,12 +137,13 @@ class ContestDisplayCard extends StatelessWidget {
                 ),
               ),
             ],
-          ),          
-          FancyButton(onPressed: () => _launchURL(), icon: Icons.open_in_new, label: ' Visit Page'),
+          ),
+          FancyButton(
+              onPressed: () => _launchURL(),
+              icon: Icons.open_in_new,
+              label: ' Visit Page'),
         ],
       ),
     );
   }
 }
-
-

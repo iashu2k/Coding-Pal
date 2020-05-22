@@ -14,8 +14,9 @@ class ContestInfo {
   String apiKey = '81c3bece1c696d9f9534fefc4b2627d54f396e0a';
 
   Future contestslist() async {
-    
-    String url = '''
+
+    try {
+      String url = '''
 https://clist.by/api/v1/json/contest/?username=$userid&api_key=$apiKey&end__gt=$currenttime&end__lt=$nextmonth&order_by=start''';
     http.Response response = await http.get(url);
     if (response.statusCode == 200) {
@@ -24,6 +25,14 @@ https://clist.by/api/v1/json/contest/?username=$userid&api_key=$apiKey&end__gt=$
       return jsonDecode(data);
     } else {
       print(response.statusCode);
+      return 'not found';
     }
+      
+    } catch (e) {
+      print(e);
+      return 'not found';
+    }
+    
+    
   }
 }

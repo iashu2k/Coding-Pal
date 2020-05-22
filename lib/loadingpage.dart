@@ -2,7 +2,7 @@ import 'package:CodingPal/homepage.dart';
 import 'package:flutter/material.dart';
 import 'services/contests.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
+import 'errorPage.dart';
 class LoadingPage extends StatefulWidget {
   static const String id = 'loading_page';
 
@@ -20,7 +20,11 @@ class _LoadingPageState extends State<LoadingPage> {
   void getdata() async {
     Contests contests = Contests();
     var contents = await contests.allcontests();
-
+    (contents=='error')?Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ErrorPage()
+                )):
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(

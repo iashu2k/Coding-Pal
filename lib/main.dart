@@ -15,11 +15,7 @@ class CodingPal extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFF0A0E21),
       ),
       home: LoadingPage(),
-      // routes: {
-      //   HomePage.id: (context)=>HomePage(),
-      //   LoadingPage.id:(context)=>LoadingPage(),
-        
-      // },
+      
     );
   }
 }

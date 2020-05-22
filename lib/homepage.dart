@@ -12,22 +12,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: <Widget>[
-          CircleAvatar(
-            radius: 18,
-            child: ClipOval(
-              child: Image.network(
-                'https://www.tuktukdesign.com/wp-content/uploads/2020/01/profile-icon-vector.jpg',
-              ),
-            ),
+        
+        title: Center(
+          child: Text(
+            'CodingPal',
+            style: kappheading,
           ),
-          SizedBox(
-            width: 15.0,
-          ),
-        ],
-        title: Text(
-          'CodingPal',
-          style: kappheading,
         ),
       ),
       body: ListView.builder(

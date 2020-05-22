@@ -27,6 +27,7 @@ class FancyButton extends StatelessWidget {
                 label,
                 style: TextStyle(
                   fontSize: 10,
+                  letterSpacing: 0.5,
                 ),
               ),
             ],
