@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "982052261263",
+    "firebase_url": "https://codingpal-10c71.firebaseio.com",
+    "project_id": "codingpal-10c71",
+    "storage_bucket": "codingpal-10c71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982052261263:android:f65a5fad83b21878c7cffa",
+        "android_client_info": {
+          "package_name": "com.example.CodingPal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982052261263-sfihn2gtslneppliiifk8mp7bibr1t3h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.CodingPal",
+            "certificate_hash": "e4bffce86a8eb11f50de9e28aa3e9c52542a061e"
+          }
+        },
+        {
+          "client_id": "982052261263-pfavl9t20pmjjrer3mggf65kj8dp2edk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhBJLJK499M2P_2QlyYjhVdGCsOUy0Wbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982052261263-pfavl9t20pmjjrer3mggf65kj8dp2edk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
