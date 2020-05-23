@@ -3,8 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'current_date_time.dart';
 
 import 'package:http/http.dart' as http;
-import 'dart:convert';
+
 import 'package:flutter_config/flutter_config.dart';
+
 
 class ContestInfo {
   
@@ -30,7 +31,7 @@ https://clist.by/api/v1/json/contest/?username=$userid&api_key=$apiKey&end__gt=$
     if (response.statusCode == 200) {
       String data = response.body;
       
-      return jsonDecode(data);
+      return data;
     } else {
       print(response.statusCode);
       return 'not found';
