@@ -27,9 +27,10 @@ class ContestDisplayCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime compStart =
-        DateTime.parse(start).add(Duration(hours: 5, minutes: 30));
-    DateTime compEnd = DateTime.parse(end).add(Duration(hours: 5, minutes: 30));
+    DateTime now = DateTime.now();
+    var offset = Duration(seconds: now.timeZoneOffset.inSeconds);
+    DateTime compStart = DateTime.parse(start).add(offset);
+    DateTime compEnd = DateTime.parse(end).add(offset);
     var str = DateFormat.MMMM().format(compStart);
     var en = DateFormat.MMMM().format(compEnd);
     var strdate = DateFormat.d().format(compStart);
@@ -43,7 +44,10 @@ class ContestDisplayCard extends StatelessWidget {
       abbreviated: true,
     );
 
-    DateTime now = DateTime.now();
+    var offsethr = offset.inHours;
+    var offsetmin = (offset.inMinutes) % 60;
+    String offsetStr =
+        'GMT+' + offsethr.toString() + ':' + offsetmin.toString();
     int status = now.compareTo(compStart);
     Widget compStaus = (status >= 0)
         ? Text(
@@ -63,7 +67,7 @@ class ContestDisplayCard extends StatelessWidget {
                   description: link,
                   startDate: compStart,
                   endDate: compEnd,
-                  timeZone: 'GMT+5:30');
+                  timeZone: offsetStr);
               Add2Calendar.addEvent2Cal(event);
             },
           );
