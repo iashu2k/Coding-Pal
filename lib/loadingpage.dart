@@ -40,6 +40,11 @@ class _LoadingPageState extends State<LoadingPage> {
         contests.addStringToSF(contents);
       }else{
         contents = await contests.getStringValuesSF();
+        if(contents=='error'){
+          contests.adddatetimeToSF(DateTime.now().toString());
+          contents = await contests.allcontests();
+          contests.addStringToSF(contents);
+        }
       }
     } 
 
