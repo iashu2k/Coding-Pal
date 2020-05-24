@@ -5,7 +5,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'errorPage.dart';
 import 'dart:convert';
 
-
 class LoadingPage extends StatefulWidget {
   static const String id = 'loading_page';
 
@@ -21,62 +20,82 @@ class _LoadingPageState extends State<LoadingPage> {
   }
 
   void getdata() async {
-    
     Contests contests = Contests();
     var lastUpdated = await contests.getdatetimeValuesSF();
     var contents;
-    if(lastUpdated==null){
+    if (lastUpdated == null) {
       contests.adddatetimeToSF(DateTime.now().toString());
       contents = await contests.allcontests();
       contests.addStringToSF(contents);
-    }else{
+    } else {
       DateTime prev = DateTime.parse(lastUpdated);
       DateTime now = DateTime.now();
       var dur = now.difference(prev).inMinutes;
-
-      if(dur>10){
+      if (dur > 20) {
         contests.adddatetimeToSF(DateTime.now().toString());
         contents = await contests.allcontests();
         contests.addStringToSF(contents);
-      }else{
+      } else {
         contents = await contests.getStringValuesSF();
-        if(contents=='error'){
+        if (contents == 'error') {
           contests.adddatetimeToSF(DateTime.now().toString());
           contents = await contests.allcontests();
           contests.addStringToSF(contents);
         }
       }
-    } 
+    }
 
-  
-
-    (contents=='error')?Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) => ErrorPage()
-                )):
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) => HomePage(
-                  contests: jsonDecode(contents)['objects'] as List,
-                )));
+    (contents == 'error')
+        ? Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => ErrorPage()))
+        : Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => HomePage(
+                      contests: jsonDecode(contents)['objects'] as List,
+                    )));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body:  Stack(
+        children: <Widget>[
+          Center(
+            child: SizedBox(
+              height: 225.0,
+              width: 200.0,
+              child: Column(
         
         children: <Widget>[
-          Image.asset('images/cp.png', height: 200, width: 200,),
+          Image.asset(
+            'images/cp.png',
+            height: 200,
+            width: 200,
+          ),
           SpinKitFadingFour(
             color: Colors.white,
             size: 25.0,
           ),
         ],
       ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text('made for the ❤️ of coding;',
+                style: TextStyle(
+                  fontFamily: 'PressStart2P',
+                  fontSize: 10,
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
+

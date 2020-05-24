@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'homepage.dart';
 import 'loadingpage.dart';
+
 
 void main() {
   runApp(CodingPal());
@@ -15,11 +15,6 @@ class CodingPal extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFF0A0E21),
       ),
       home: LoadingPage(),
-      
     );
   }
 }
-
-
-
-
