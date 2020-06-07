@@ -1,16 +1,25 @@
 # CodingPal
 
-A new Flutter project.
+A simple flutter app project to view and manage online coding contests of popular platforms.
 
-## Getting Started
+## About App
 
-This project is a starting point for a Flutter application.
+The App is easy to use and helps in not missing out any competition. Get details of Live and Upcoming Contests from popular platforms like
+    - Codechef
+    - Codeforces
+    - Hackerearth
+    - Hackerrank
+    - Leetcode
+    - Topcoder
+    - Kaggle
+    - Google competitions
+    - Project Euler
+    - Atcoder
 
-A few resources to get you started if this is your first Flutter project:
+Add Contests to your Google Calendar or directly visit the page.
+ Participate and upskill yourself. Happy Coding !
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+[## Checkout App on Playstore](https://play.google.com/store/apps/details?id=com.consistencyapps.CodingPal&hl=en)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+![Alt Text](https://media.giphy.com/media/XHuwjosEv6YSDi9zBo/giphy.gif)
