@@ -20,8 +20,6 @@ const kplatname = TextStyle(
   letterSpacing: 1.0,
 );
 
-
-
 const kdates = TextStyle(
   fontSize: 24.0,
   fontFamily: 'Raleway',

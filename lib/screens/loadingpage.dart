@@ -1,6 +1,6 @@
-import 'package:CodingPal/homepage.dart';
+import 'package:CodingPal/screens/homepage.dart';
 import 'package:flutter/material.dart';
-import 'services/contests.dart';
+import 'package:CodingPal/services/contests.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'errorPage.dart';
 import 'dart:convert';
@@ -59,33 +59,33 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  Stack(
+      body: Stack(
         children: <Widget>[
           Center(
             child: SizedBox(
               height: 225.0,
               width: 200.0,
               child: Column(
-        
-        children: <Widget>[
-          Image.asset(
-            'images/cp.png',
-            height: 200,
-            width: 200,
-          ),
-          SpinKitFadingFour(
-            color: Colors.white,
-            size: 25.0,
-          ),
-        ],
-      ),
+                children: <Widget>[
+                  Image.asset(
+                    'images/cp.png',
+                    height: 200,
+                    width: 200,
+                  ),
+                  SpinKitFadingFour(
+                    color: Colors.white,
+                    size: 25.0,
+                  ),
+                ],
+              ),
             ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Text('made for the ❤️ of coding;',
+              child: Text(
+                'made for the ❤️ of coding;',
                 style: TextStyle(
                   fontFamily: 'PressStart2P',
                   fontSize: 10,
@@ -98,4 +98,3 @@ class _LoadingPageState extends State<LoadingPage> {
     );
   }
 }
-

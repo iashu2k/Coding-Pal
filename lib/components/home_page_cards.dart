@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:CodingPal/home_page_cardContent.dart';
-import 'constants.dart';
-import 'info_page.dart';
+import 'home_page_cardContent.dart';
+import 'package:CodingPal/constants.dart';
+import 'package:CodingPal/screens/info_page.dart';
 
 class LogoCards extends StatelessWidget {
   LogoCards({this.logoname, this.platform, this.contests});

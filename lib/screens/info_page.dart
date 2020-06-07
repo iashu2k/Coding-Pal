@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'contest_display.dart';
-import 'constants.dart';
-import 'services/platform_code.dart';
+import 'package:CodingPal/components/contest_display.dart';
+import 'package:CodingPal/constants.dart';
+import 'package:CodingPal/services/platform_code.dart';
 
 class InfoPage extends StatelessWidget {
   InfoPage({this.platform, this.logoname, this.competitions});
@@ -51,14 +51,16 @@ class InfoPage extends StatelessWidget {
                 children: <Widget>[
                   Spacer(),
                   ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
-                  child: Hero(
-                    tag: platform,
-                                      child: Image.asset(
-              'images/$logoname', height: 130.0, width: 130.0,
-          ),
+                    borderRadius: BorderRadius.circular(20.0),
+                    child: Hero(
+                      tag: platform,
+                      child: Image.asset(
+                        'images/$logoname',
+                        height: 130.0,
+                        width: 130.0,
+                      ),
+                    ),
                   ),
-        ),
                   Spacer(),
                 ],
               ),

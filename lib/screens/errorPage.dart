@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'loadingpage.dart';
 
-
 class ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,24 +14,26 @@ class ErrorPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Expanded(flex: 5, child: Image.asset('images/astronaut.jpg')),
-            Expanded(flex: 1,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
+            Expanded(
+              flex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(height: 20.0),
                   AutoSizeText('Can\'t Connect to Server'),
-                  SizedBox(height: 20.0),            
-                  FloatingActionButton(onPressed: (){
-                    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) => LoadingPage()
-                ));
-                  }, child: Icon(Icons.replay),),
+                  SizedBox(height: 20.0),
+                  FloatingActionButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoadingPage()));
+                    },
+                    child: Icon(Icons.replay),
+                  ),
                 ],
               ),
             ),
-            
           ],
         ),
       ),

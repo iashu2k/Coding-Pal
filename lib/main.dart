@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'loadingpage.dart';
-
+import 'package:CodingPal/screens/loadingpage.dart';
 
 void main() {
   runApp(CodingPal());

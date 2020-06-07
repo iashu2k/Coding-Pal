@@ -7,10 +7,29 @@ class Platforms {
 }
 
 List<Platforms> platforms = [
-Platforms(logo1: 'codechef.jpg', logo2: 'codeforces.png', name1: 'CODECHEF', name2: 'CODEFORCES'),
-Platforms(logo1: 'hackerearth.jpg', logo2: 'hackerrank.png', name1: 'HACKEREARTH', name2: 'HACKERRANK'),
-Platforms(logo1: 'leetcode.png', logo2: 'topcoder.png', name1: 'LEETCODE', name2: 'TOPCODER'),
-Platforms(logo1: 'kaggle.png', logo2: 'google.png', name1: 'KAGGLE', name2: 'GOOGLE'),
-Platforms(logo1: 'projecteuler.png', logo2: 'atcoder.png', name1: 'PROJECT EULER', name2: 'ATCODER'),
-
+  Platforms(
+      logo1: 'codechef.jpg',
+      logo2: 'codeforces.png',
+      name1: 'CODECHEF',
+      name2: 'CODEFORCES'),
+  Platforms(
+      logo1: 'hackerearth.jpg',
+      logo2: 'hackerrank.png',
+      name1: 'HACKEREARTH',
+      name2: 'HACKERRANK'),
+  Platforms(
+      logo1: 'leetcode.png',
+      logo2: 'topcoder.png',
+      name1: 'LEETCODE',
+      name2: 'TOPCODER'),
+  Platforms(
+      logo1: 'kaggle.png',
+      logo2: 'google.png',
+      name1: 'KAGGLE',
+      name2: 'GOOGLE'),
+  Platforms(
+      logo1: 'projecteuler.png',
+      logo2: 'atcoder.png',
+      name1: 'PROJECT EULER',
+      name2: 'ATCODER'),
 ];

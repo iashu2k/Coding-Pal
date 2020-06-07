@@ -1,7 +1,7 @@
 import 'package:CodingPal/constants.dart';
 import 'package:flutter/material.dart';
-import 'home_page_cards.dart';
-import 'platformlist.dart';
+import 'package:CodingPal/components/home_page_cards.dart';
+import 'package:CodingPal/platformlist.dart';
 
 class HomePage extends StatelessWidget {
   static const String id = 'homepage';
@@ -12,7 +12,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        
         title: Center(
           child: Text(
             'CodingPal',
@@ -46,7 +45,6 @@ class PlatformList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      
       children: <Widget>[
         Expanded(
           child: LogoCards(
